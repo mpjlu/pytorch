@@ -9,6 +9,7 @@ namespace torch {
 namespace nn {
 namespace functional {
 
+namespace detail {
 inline Tensor interpolate(const Tensor& input, InterpolateOptions options) {
   auto _check_size_scale_factor = [options](size_t dim) {
     if (options.size().empty() && options.scale_factor().empty()) {
@@ -100,6 +101,11 @@ inline Tensor interpolate(const Tensor& input, InterpolateOptions options) {
         "(got ", input.dim(), "D) for the modes: nearest | linear | bilinear | bicubic | trilinear "
         "(got ", enumtype::get_enum_name(options.mode()), ")");
   }
+}
+} // namespace detail
+
+inline Tensor interpolate(const Tensor& input, InterpolateOptions options) {
+  TODO
 }
 
 } // namespace functional

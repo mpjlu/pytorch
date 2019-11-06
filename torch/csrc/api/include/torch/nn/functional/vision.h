@@ -47,6 +47,9 @@ inline Tensor affine_grid(
   return torch::affine_grid_generator(theta, size, align_corners);
 }
 
+// ============================================================================
+
+namespace detail {
 inline Tensor grid_sample(
     const Tensor& input,
     const Tensor& grid,
@@ -93,6 +96,14 @@ inline Tensor grid_sample(
   }
   
   return torch::grid_sampler(input, grid, mode_enum, padding_mode_enum, options.align_corners().value());
+}
+} // namespace detail
+
+inline Tensor grid_sample(
+    const Tensor& input,
+    const Tensor& grid,
+    GridSampleOptions options = {}) {
+  TODO
 }
 
 } // namespace functional
